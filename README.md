@@ -8,7 +8,6 @@ The app is currently in its very early stages and is not ready for public use ye
 Getting started
 ---------------
 
-1. Deploy the app using your stack/platform of choice.
-2. Generate a secret token using the built-in rake task:
+Photolesce should work like any normal Rails 3 app. The only special setup step you need to do is generate a secret token using the built-in rake task:
 
->    `$ rake generate_secret_token`
+    $ rake generate_secret_token
