@@ -27,7 +27,7 @@ class Feed < ActiveRecord::Base
 
     save!
 
-    return if !@parsed || !@parsed.respond_to(:entries)
+    return if !@parsed || !@parsed.respond_to?(:entries)
 
     for entry in @parsed.entries
       content = entry.respond_to?(:links) ? entry.links[1] : entry.media_content
