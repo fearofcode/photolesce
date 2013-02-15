@@ -42,7 +42,7 @@ class FeedTest < ActiveSupport::TestCase
     feed = Feed.create!(url: "http://www.foo.com/to_be_updated.rss", last_modified: Time.now)
     feed.entries.create!(content: "http://www.foo.com/bar.jpg", link: "http://www.foo.com/blah.html")
 
-    Feedzirra::Feed.expects(:update).at_least_once
+    Feedzirra::Feed.expects(:update).once
 
     feed.fetch_and_parse
 

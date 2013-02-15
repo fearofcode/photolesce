@@ -12,6 +12,9 @@ class Feed < ActiveRecord::Base
   validates_format_of :url, with: URI::regexp(%w(http https))
 
   def fetch_and_parse
+
+    # TODO refactor this in some way besides just extracting methods that don't get called by anything else out
+
     Feedzirra::Feed.add_common_feed_entry_element("media:content", value: :url, as: :media_content)
 
     begin
