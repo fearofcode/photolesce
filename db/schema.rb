@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20130214072120) do
   create_table "entries", :force => true do |t|
     t.string   "content"
     t.string   "link"
+    t.datetime "published"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "feed_id"
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130214072120) do
     t.string   "title"
     t.string   "etag"
     t.string   "last_modified"
+    t.boolean  "fetched_ok"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

@@ -5,6 +5,7 @@ class CreateFeeds < ActiveRecord::Migration
       t.string :title
       t.string :etag
       t.string :last_modified
+      t.boolean :fetched_ok
 
       t.timestamps
     end

@@ -1,5 +1,5 @@
 class Entry < ActiveRecord::Base
-  attr_accessible :content, :link
+  attr_accessible :content, :link, :published
 
   belongs_to :feed
 
