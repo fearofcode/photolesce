@@ -23,7 +23,6 @@ class FeedTest < ActiveSupport::TestCase
 
       feed.fetch_and_parse
       assert_equal 20, feed.entries.count
-      p input_feed
       feed.destroy
     end
   end
