@@ -10,7 +10,7 @@ class FeedTest < ActiveSupport::TestCase
       feed.fetch_and_parse
 
       assert_equal "abstract photography Pool", feed.title
-      assert_equal Time, feed.last_modified.class
+      assert_equal ActiveSupport::TimeWithZone, feed.last_modified.class
 
       assert !feed.changed?
       assert feed.fetched_ok
