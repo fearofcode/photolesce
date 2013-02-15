@@ -4,7 +4,7 @@ class CreateFeeds < ActiveRecord::Migration
       t.string :url
       t.string :title
       t.string :etag
-      t.time :last_modified
+      t.datetime :last_modified
       t.boolean :fetched_ok
 
       t.timestamps

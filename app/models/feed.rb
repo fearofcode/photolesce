@@ -14,8 +14,10 @@ class Feed < ActiveRecord::Base
   def fetch_and_parse
     Feedzirra::Feed.add_common_feed_entry_element("media:content", value: :url, as: :media_content)
 
+    options = last_modified? ? {if_modified_since: last_modified} : {}
+
     begin
-      @parsed = Feedzirra::Feed.fetch_and_parse(url)
+      @parsed = Feedzirra::Feed.fetch_and_parse(url, options)
 
       self.title = @parsed.title
       self.last_modified = @parsed.last_modified if @parsed.last_modified

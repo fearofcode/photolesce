@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20130214072120) do
     t.string   "url"
     t.string   "title"
     t.string   "etag"
-    t.time     "last_modified"
+    t.datetime "last_modified"
     t.boolean  "fetched_ok"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
