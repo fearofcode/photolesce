@@ -6,6 +6,7 @@ class FeedTest < ActiveSupport::TestCase
     [sample_rss_feed, sample_atom_feed].each do |input_feed|
       feed = Feed.create(url: "http://foo.com/bar.rss")
       Feedzirra::Feed.stubs(:fetch_and_parse).returns(input_feed)
+      Feedzirra::Feed.stubs(:update).returns(input_feed)
 
       feed.fetch_and_parse
 
@@ -15,14 +16,14 @@ class FeedTest < ActiveSupport::TestCase
       assert !feed.changed?
       assert feed.fetched_ok
 
-      assert_equal input_feed.entries.count, feed.entries.count
+      assert_equal 20, feed.entries.count
       assert feed.entries.first.content.end_with?(".jpg")
       assert feed.entries.first.link.start_with?("http://www.flickr.com")
       assert_equal ActiveSupport::TimeWithZone, feed.entries.first.published.class
 
       feed.fetch_and_parse
-      assert_equal input_feed.entries.count, feed.entries.count
-
+      assert_equal 20, feed.entries.count
+      p input_feed
       feed.destroy
     end
   end
@@ -34,5 +35,18 @@ class FeedTest < ActiveSupport::TestCase
     feed.fetch_and_parse
 
     assert !feed.fetched_ok
+
+    feed.destroy
+  end
+
+  test "Updates properly after downloading the first time" do
+    feed = Feed.create!(url: "http://www.foo.com/to_be_updated.rss", last_modified: Time.now)
+    feed.entries.create!(content: "http://www.foo.com/bar.jpg", link: "http://www.foo.com/blah.html")
+
+    Feedzirra::Feed.expects(:update).at_least_once
+
+    feed.fetch_and_parse
+
+    feed.destroy
   end
 end
