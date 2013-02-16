@@ -1,0 +1,16 @@
+<h1>Photolesce</h1>
+
+<div class="container">
+  <% @entries.each do |entry| %>
+    <div class="entry">
+      <h2><%= entry.title %></h2>
+      <h3><%= link_to entry.feed.title, entry.feed.url %></h3>
+      <a href='<%= entry.link %>'>
+        <img data-src='<%= entry.content %>'
+            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+            onload=lzld(this) onerror=lzld(this) />
+      </a>
+    </div>
+  <% end %>
+
+</div>

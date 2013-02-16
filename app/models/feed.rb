@@ -49,7 +49,7 @@ class Feed < ActiveRecord::Base
     for entry in @parsed.entries
       content = entry.respond_to?(:links) ? entry.links[1] : entry.media_content
 
-      self.entries.create(content: content, link: entry.url, published: entry.published)
+      self.entries.create(content: content, link: entry.url, published: entry.published, title: entry.title)
     end
 
   end

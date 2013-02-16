@@ -20,6 +20,7 @@ class FeedTest < ActiveSupport::TestCase
       assert feed.entries.first.content.end_with?(".jpg")
       assert feed.entries.first.link.start_with?("http://www.flickr.com")
       assert_equal ActiveSupport::TimeWithZone, feed.entries.first.published.class
+      assert feed.entries.first.title?
 
       feed.fetch_and_parse
       assert_equal 20, feed.entries.count

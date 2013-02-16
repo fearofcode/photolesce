@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20130214072120) do
   create_table "entries", :force => true do |t|
     t.string   "content"
     t.string   "link"
+    t.string   "title"
     t.datetime "published"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

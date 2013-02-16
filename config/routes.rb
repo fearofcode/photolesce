@@ -1,4 +1,6 @@
 Photolesce::Application.routes.draw do
+  get "entry/index"
+
   resources :feeds
 
 

@@ -2,10 +2,9 @@
 
 <table>
   <tr>
-    <th>Url</th>
-    <th>Title</th>
-    <th>Etag</th>
+    <th>Feed</th>
     <th>Last modified</th>
+    <th>Fetched OK?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +12,9 @@
 
 <% @feeds.each do |feed| %>
   <tr>
-    <td><%= feed.url %></td>
-    <td><%= feed.title %></td>
-    <td><%= feed.etag %></td>
+    <td><%= link_to feed.title, feed.url %></td>
     <td><%= feed.last_modified %></td>
+    <td><%= feed.fetched_ok %></td>
     <td><%= link_to 'Show', feed %></td>
     <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
     <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>

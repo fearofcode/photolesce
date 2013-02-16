@@ -3,12 +3,18 @@
 <head>
   <title>Photolesce</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <%= javascript_include_tag "application" %>
+
+  <script>
+window.lzld = (new Lazyload).lzld;
+  </script>
 </head>
 <body>
 
 <%= yield %>
 
-</body>
+
+  </body>
 </html>

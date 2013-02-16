@@ -3,6 +3,7 @@ class CreateEntries < ActiveRecord::Migration
     create_table :entries do |t|
       t.string :content
       t.string :link
+      t.string :title
       t.datetime :published
 
       t.timestamps
