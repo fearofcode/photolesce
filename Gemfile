@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'feedzirra'
+gem 'flickraw'
 
 gem 'rails', '3.2.12'
 

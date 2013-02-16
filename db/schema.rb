@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214072120) do
+ActiveRecord::Schema.define(:version => 20130216155423) do
 
   create_table "entries", :force => true do |t|
     t.string   "content"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130214072120) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "feed_id"
+    t.string   "photo_id"
   end
 
   add_index "entries", ["content"], :name => "index_entries_on_content", :unique => true
