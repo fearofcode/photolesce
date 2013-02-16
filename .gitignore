@@ -5,3 +5,4 @@
 *.swp
 
 /config/initializers/secret_token.rb
+/config/flickr_secret.rb

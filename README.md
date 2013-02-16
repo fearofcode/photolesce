@@ -8,6 +8,10 @@ The app is currently in its very early stages and is not ready for public use ye
 Getting started
 ---------------
 
-Photolesce should work like any normal Rails 3 app. The only special setup step you need to do is generate a secret token using the built-in rake task:
+Photolesce should work like any normal Rails 3 app. All you need to do is deploy and then do the following:
+
+Generate a secret token using the built-in rake task:
 
     $ rake generate_secret_token
+
+[Apply for a Flickr API key](http://www.flickr.com/services/apps/create/noncommercial/?) (which will require a Flickr account) and fill in the values in `config/flickr_key.rb`. See `config/flickr_key.rb.template` for an example of how to fill it in. 
