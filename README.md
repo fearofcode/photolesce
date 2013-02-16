@@ -14,4 +14,4 @@ Generate a secret token using the built-in rake task:
 
     $ rake generate_secret_token
 
-[Apply for a Flickr API key](http://www.flickr.com/services/apps/create/noncommercial/?) (which will require a Flickr account) and fill in the values in `config/flickr_key.rb`. See `config/flickr_key.rb.template` for an example of how to fill it in. 
+[Apply for a Flickr API key](http://www.flickr.com/services/apps/create/noncommercial/?) (which will require a Flickr account) and fill in the values in `config/initializers/flickr_key.rb`. See `config/initializers/flickr_key.rb.template` for an example of how to fill it in. 
