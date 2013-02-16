@@ -6,11 +6,17 @@
       <h2><%= entry.title %></h2>
       <h3><%= link_to entry.feed.title, entry.feed.url %></h3>
       <a href='<%= entry.link %>'>
-        <img data-src='<%= entry.content %>'
-            src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
-            onload=lzld(this) onerror=lzld(this) />
+        <%= image_tag(entry.content) %>
       </a>
     </div>
   <% end %>
 
+  <% if @page > 1 %>
+    <%= link_to raw("&larr; Previous"), root_path(page: @page-1) %>
+  <% end %>
+
+  <% if @next_page %>
+    <%= link_to raw("Next &rarr;"), root_path(page: @page+1) %>
+  <% end %>
 </div>
+
