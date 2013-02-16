@@ -34,7 +34,7 @@ class Feed < ActiveRecord::Base
         @parsed = Feedzirra::Feed.fetch_and_parse(url)
       end
 
-      self.title = @parsed.title
+      self.title = @parsed.title if !self.title?
       self.last_modified = @parsed.last_modified if @parsed.last_modified
       self.etag = @parsed.etag if @parsed.etag
       self.fetched_ok = true

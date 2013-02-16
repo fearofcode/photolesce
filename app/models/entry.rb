@@ -1,20 +1,19 @@
 require 'uri'
+require 'flickraw'
 
 class Entry < ActiveRecord::Base
-  attr_accessible :content, :link, :published, :title, :photo_id
+  attr_accessible :content, :link, :published, :title, :photo_id, :favorite_cnt
 
   belongs_to :feed
 
   validates_presence_of :content
   validates_uniqueness_of :content
-  
+
   default_scope order('published DESC')
 
   before_save :set_photo_id
 
   def set_photo_id
-    # http://farm9.staticflickr.com/8103/8476326710_f3a42343da_o.jpg
-
     begin
       parsed = URI::parse(content)
 
@@ -24,6 +23,18 @@ class Entry < ActiveRecord::Base
       self.photo_id = path_parts[2].split("_")[0]
     rescue
       logger.error "Entry ID #{id} could not be parsed"
+    end
+  end
+
+  def fetch_favorite_count
+    return if !photo_id
+
+    begin
+      favs = flickr.photos.getFavorites(photo_id: photo_id)
+
+      self.favorite_cnt = favs.total.to_i
+    rescue
+      self.favorite_cnt = 0
     end
   end
 end

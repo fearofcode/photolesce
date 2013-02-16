@@ -11,20 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216155423) do
+ActiveRecord::Schema.define(:version => 20130216214959) do
 
   create_table "entries", :force => true do |t|
     t.string   "content"
     t.string   "link"
     t.string   "title"
     t.datetime "published"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "feed_id"
     t.string   "photo_id"
+    t.integer  "favorite_cnt"
   end
 
   add_index "entries", ["content"], :name => "index_entries_on_content", :unique => true
+  add_index "entries", ["favorite_cnt"], :name => "index_entries_on_favorite_cnt"
+  add_index "entries", ["published"], :name => "index_entries_on_published"
 
   create_table "feeds", :force => true do |t|
     t.string   "url"
