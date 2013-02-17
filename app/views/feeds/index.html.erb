@@ -14,7 +14,12 @@
 
 <% @feeds.each do |feed| %>
   <tr>
-    <td><%= link_to feed.title, feed.site_url %></td>
+    <td><% if feed.title %>
+          <%= link_to feed.title, feed.site_url %>
+        <% else %>
+          <em>(Unknown)</em>
+        <% end %>
+    </td>
     <td><%= link_to "XML feed", feed.url %></td>
     <td><%= feed.last_modified %></td>
     <td><%= feed.created_at %></td>

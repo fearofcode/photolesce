@@ -12,6 +12,12 @@ class EntryTest < ActiveSupport::TestCase
     assert_nil tumblr_entry.photo_id
   end
 
+  test "Set title to 'Untitled' if no title provided" do
+    entry = Entry.create(content: "http://foo.com/bar.jpg")
+
+    assert_equal "Untitled", entry.title
+  end
+
   test "Fetching favorite counts for Flickr photos" do
     entry = Entry.create(content: "http://foo.com/bar.jpg", photo_id: "12345")
 

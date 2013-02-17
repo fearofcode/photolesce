@@ -1,7 +1,0 @@
-require 'flickraw'
-
-FLICKR_KEY = 'Insert your Flickr API key here. You need a Flickr account; sign up for it at http://www.flickr.com/services/apps/create/noncommercial/?'
-FLICKR_SECRET = 'Put your Flickr secret key here, which will be given when you sign up for your key at the URL above'
-
-FlickRaw.api_key = FLICKR_KEY
-FlickRaw.shared_secret = FLICKR_SECRET

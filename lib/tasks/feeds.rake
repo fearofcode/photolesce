@@ -11,15 +11,9 @@ desc 'Fetch or update Flickr favorite counts for the N most recently published e
 task fetch_flickr_favorites: :environment do
   limit = 2500
 
-  i = 1
-
-  Entry.limit(limit).each do |entry|
-    puts "#{Time.now}\tFetching favorite counts for entry #{i}"
+  Entry.limit(limit).each_with_index do |entry, i|
+    puts "#{Time.now}\tFetching favorite counts for entry #{i+1}"
     entry.fetch_favorite_count
     entry.save
-    
-    i += 1
-
-    sleep 1
   end
 end

@@ -1,4 +1,6 @@
 class FeedsController < ApplicationController
+  http_basic_authenticate_with name: "admin", :password => ADMIN_PASS
+
   # GET /feeds
   # GET /feeds.json
   def index
@@ -44,7 +46,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        format.html { redirect_to feeds_path, notice: 'Feed was successfully created.' }
         format.json { render json: @feed, status: :created, location: @feed }
       else
         format.html { render action: "new" }

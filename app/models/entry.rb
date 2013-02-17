@@ -12,6 +12,7 @@ class Entry < ActiveRecord::Base
   default_scope order('published DESC')
 
   before_save :set_photo_id
+  before_save :initialize_title
 
   def set_photo_id
     begin
@@ -24,6 +25,10 @@ class Entry < ActiveRecord::Base
     rescue
       logger.error "Entry ID #{id} could not be parsed"
     end
+  end
+
+  def initialize_title
+    self.title = "Untitled" if !title
   end
 
   def fetch_favorite_count

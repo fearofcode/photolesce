@@ -18,12 +18,14 @@
     </div>
   <% end %>
 
-  <% if @page > 1 %>
-    <%= link_to raw("&larr; Previous"), root_path(page: @page-1) %>
-  <% end %>
+  <div id="pagination">
+    <% if @page > 1 %>
+      <%= link_to raw("&larr; Previous"), root_path(page: @page-1) %>
+    <% end %>
 
-  <% if @next_page %>
-    <%= link_to raw("Next &rarr;"), root_path(page: @page+1) %>
-  <% end %>
+    <% if @next_page %>
+      <%= link_to raw("Next &rarr;"), root_path(page: @page+1) %>
+    <% end %>
+  </div>
 </div>
 
