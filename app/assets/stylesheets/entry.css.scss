@@ -1,3 +1,10 @@
 // Place all the styles related to the Entry controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.entry { margin-bottom: 64px; text-align: center; font-size: 11px }
+
+.entry-footer { margin-top: 10px }
+.entry-title { font-weight: bold }
+.entry-feed { margin-left: 8px }
+.published-time { color: #666; margin-left: 8px }

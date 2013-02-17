@@ -14,5 +14,6 @@ class EntryController < ApplicationController
   end
 
   def about
+    @feeds = Feed.where("title IS NOT NULL")
   end
 end

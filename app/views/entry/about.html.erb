@@ -1,9 +1,15 @@
 <h1>About Photolesce</h1>
 
-Photolesce aggregates together RSS feeds from photo sites like Flickr and Tumblr.
+<p>Photolesce aggregates together RSS feeds from photo sites like Flickr and Tumblr.</p>
 
-It is [open source](http://www.github.com/fearofcode/photolesce).
+<p>It is <a href="http://www.github.com/fearofcode/photolesce">open source</a>.</p>
 
-It was created in 2013 by Warren Henning, a software developer living in Berkeley, California. You can send [email](mailto:warren.henning@gmail.com) or [tweet](http://www.textsurgery.com) if you like.
+<p>It was created in 2013 by Warren Henning, a software developer living in Berkeley, California. You can send <a href="mailto:warren.henning@gmail.com">email</a> or <a href="http://www.textsurgery.com">tweet</a> if you like.</p>
 
-This site currently aggregates from the following feeds:
+<p>This site currently aggregates from the following feeds:</p>
+
+<ul>
+<% @feeds.each do |feed| %>
+  <li><%= link_to feed.title, feed.site_url %></li>
+<% end %>
+</ul>

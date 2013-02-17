@@ -33,6 +33,11 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
+    <script src="lazyload.min.js"></script>
+    <script>
+      window.lzld = (new Lazyload).lzld;
+    </script>
   </head>
   <body>
 
@@ -44,6 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
+          <%= link_to "Pholotolesce", root_path, class: "brand" %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%= link_to "About", about_path  %></li>
@@ -54,16 +60,17 @@
     </div>
 
     <div class="container" id="wrapper">
-        <div class="span9">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
-
-      <footer>
-        <p>This site is not affiliated with or endorsed by Flickr, Yahoo!, Tumblr, or any other organization whose feeds are aggregated. All images are copyright their respective authors.</p>
+      <div class="span12">
+        <%= bootstrap_flash %>
+        <%= yield %>
+      
+        <footer>
+          <p>This site is not affiliated with or endorsed by Flickr, Yahoo!, Tumblr, or any other organization whose feeds are aggregated. All images are copyright their respective authors.</p>
       </footer>
 
+      </div>
+
+     
     </div> <!-- /container -->
 
     <!-- Javascripts
