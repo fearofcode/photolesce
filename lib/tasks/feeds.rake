@@ -13,7 +13,7 @@ task fetch_flickr_favorites: :environment do
 
   i = 1
 
-  Entry.limit(limit).find_each do |entry|
+  Entry.limit(limit).each do |entry|
     puts "#{Time.now}\tFetching favorite counts for entry #{i}"
     entry.fetch_favorite_count
     entry.save

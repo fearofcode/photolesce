@@ -18,21 +18,7 @@ class Feed < ActiveRecord::Base
     Feedzirra::Feed.add_common_feed_entry_element("media:content", value: :url, as: :media_content)
 
     begin
-      if last_modified? && entries.count > 0
-        feed_to_update               = Feedzirra::Parser::Atom.new
-        feed_to_update.feed_url      = url
-        feed_to_update.last_modified = last_modified
-
-        last_entry     = Feedzirra::Parser::AtomEntry.new
-        last_entry.url = entries.first.link
-
-        feed_to_update.entries = [last_entry]
-
-        @parsed = Feedzirra::Feed.update(feed_to_update)
-        @parsed.entries = @parsed.new_entries
-      else
-        @parsed = Feedzirra::Feed.fetch_and_parse(url)
-      end
+      @parsed = Feedzirra::Feed.fetch_and_parse(url)
 
       self.site_url = @parsed.url
       self.title = @parsed.title
