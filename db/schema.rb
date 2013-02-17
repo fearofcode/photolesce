@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216214959) do
+ActiveRecord::Schema.define(:version => 20130217202119) do
 
   create_table "entries", :force => true do |t|
     t.string   "content"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130216214959) do
     t.boolean  "fetched_ok"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "site_url"
   end
 
   add_index "feeds", ["url"], :name => "index_feeds_on_url", :unique => true

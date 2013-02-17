@@ -11,3 +11,5 @@
  *= require_self
  *= require_tree .
  */
+
+div#wrapper { margin-left: auto; margin-right: auto }

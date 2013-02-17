@@ -12,7 +12,7 @@ class FeedTest < ActiveSupport::TestCase
 
       assert_equal "abstract photography Pool", feed.title
       assert_equal ActiveSupport::TimeWithZone, feed.last_modified.class
-
+      assert_equal "http://www.flickr.com/groups/abstrato/pool/", feed.site_url
       assert !feed.changed?
       assert feed.fetched_ok
 

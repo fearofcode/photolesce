@@ -1,6 +1,8 @@
 Photolesce::Application.routes.draw do
   resources :feeds
 
+  match "/about" => "entry#about"
+
   root to: "entry#index"
 
   # The priority is based upon order of creation:
