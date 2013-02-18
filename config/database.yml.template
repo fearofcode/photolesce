@@ -19,7 +19,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+ adapter: mysql2
+  encoding: utf8
+  database: photolesce
   pool: 5
-  timeout: 5000
+  username: fill me in
+  password: fill me in
+  socket: /tmp/mysql.sock
