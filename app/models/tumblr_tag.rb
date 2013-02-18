@@ -19,7 +19,7 @@ class TumblrTag < ActiveRecord::Base
     parsed_entries.each do |parsed_entry|
       begin
         url = parsed_entry["photos"][0]["original_size"]["url"]
-        self.entries.create(content: url, published: parsed_entry["date"], title: parsed_entry["caption"], link: parsed_entry["post_url"])
+        self.entries.create(content: url, published: Time.now, title: parsed_entry["caption"], link: parsed_entry["post_url"])
       rescue
       end
     end
