@@ -2,4 +2,12 @@
 
 <%= render 'form' %>
 
+<h1>Add multiple feeds</h1>
+
+<p>Paste in a list of URLs into the text box below with each URL separated by a newline.</p>
+
+<%= form_tag(feeds_bulk_create_path, method: "post") do %>
+  <%= text_area_tag(:urls) %> <br/>
+  <%= submit_tag "Create" %>
+<% end %>
 <%= link_to 'Back', feeds_path %>

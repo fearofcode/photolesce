@@ -38,9 +38,6 @@ class FeedsController < ApplicationController
     @feeds = Feed.all
   end
 
-  def bulk_new
-  end
-
   def bulk_create
     urls = params[:urls].split("\n")
 

@@ -5,6 +5,8 @@ Photolesce is a little application that aggregates together RSS feeds of images 
 
 The app is currently in its very early stages and is not ready for public use yet.
 
+It filters Flickr photos by a fixed amount of favorites to make sure most of the photos are of decent quality. Otherwise, the timeline winds up being inundated with too many mediocre photos amongst the good ones. Currently, this threshold is 5. In order to keep the app simple, this is not currently a user-configurable setting.
+
 Getting started
 ---------------
 
