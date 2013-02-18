@@ -1,4 +1,6 @@
 class TumblrTag < ActiveRecord::Base
+  NOTE_THRESHOLD = 10
+
   attr_accessible :tag
 
   validates_presence_of :tag
@@ -18,8 +20,12 @@ class TumblrTag < ActiveRecord::Base
 
     parsed_entries.each do |parsed_entry|
       begin
-        url = parsed_entry["photos"][0]["original_size"]["url"]
-        self.entries.create(content: url, published: Time.now, title: parsed_entry["caption"], link: parsed_entry["post_url"])
+        note_cnt = parsed_entry["note_count"].to_i
+        
+        if note_cnt > NOTE_THRESHOLD
+          url = parsed_entry["photos"][0]["original_size"]["url"]
+          self.entries.create(content: url, published: Time.now, title: parsed_entry["caption"], link: parsed_entry["post_url"])
+        end
       rescue
       end
     end
