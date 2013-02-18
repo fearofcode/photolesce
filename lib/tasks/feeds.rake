@@ -3,7 +3,14 @@ task update_feeds: :environment do
   Feed.find_each do |feed|
     puts "Updating feed with URL #{feed.url}"
     feed.fetch_and_parse
-    sleep 5
+  end
+end
+
+desc 'Update all tags'
+task update_tags: :environment do
+  TumblrTag.find_each do |tag|
+    puts "Updating tag #{tag.tag}"
+    tag.fetch_and_parse
   end
 end
 

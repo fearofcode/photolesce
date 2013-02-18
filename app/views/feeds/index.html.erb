@@ -1,3 +1,22 @@
+<h1>Listing Tumblr tags</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Tag</th>
+    <th></th>
+  </tr>
+
+  <% @tags.each do |tag| %>
+    <tr>
+      <td><%= tag.tag %></td>
+      <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+
+  <% end %>
+</table>
+
+<%= link_to 'Add tag', new_tumblr_tag_path %>
+
 <h1>Listing feeds</h1>
 
 <table class="table table-striped">
@@ -5,7 +24,6 @@
     <th>Feed</th>
     <th>Feed URL</th>
     <th>Last modified</th>
-    <th>Added on</th>
     <th>Fetched OK?</th>
     <th></th>
     <th></th>
@@ -22,7 +40,6 @@
     </td>
     <td><%= link_to "XML feed", feed.url %></td>
     <td><%= feed.last_modified %></td>
-    <td><%= feed.created_at %></td>
     <td><%= feed.fetched_ok %></td>
     <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
     <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>

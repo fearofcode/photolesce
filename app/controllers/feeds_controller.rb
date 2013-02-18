@@ -6,6 +6,8 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.order("title")
 
+    @tags = TumblrTag.order("tag")
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @feeds }
@@ -80,7 +82,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.update_attributes(params[:feed])
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
+        format.html { redirect_to feeds_path, notice: 'Feed was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

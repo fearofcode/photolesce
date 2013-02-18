@@ -1,4 +1,6 @@
 Photolesce::Application.routes.draw do
+  resources :tumblr_tags, only: [:new, :create, :destroy]
+
   get "/feeds/export"
   post "/feeds/bulk_create"
   resources :feeds

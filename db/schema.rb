@@ -11,23 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217202119) do
+ActiveRecord::Schema.define(:version => 20130218063450) do
 
   create_table "entries", :force => true do |t|
     t.string   "content"
     t.string   "link"
     t.string   "title"
     t.datetime "published"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "feed_id"
     t.string   "photo_id"
     t.integer  "favorite_cnt"
+    t.integer  "tumblr_tag_id"
   end
 
   add_index "entries", ["content"], :name => "index_entries_on_content", :unique => true
   add_index "entries", ["favorite_cnt"], :name => "index_entries_on_favorite_cnt"
+  add_index "entries", ["feed_id"], :name => "index_entries_on_feed_id"
   add_index "entries", ["published"], :name => "index_entries_on_published"
+  add_index "entries", ["tumblr_tag_id"], :name => "index_entries_on_tumblr_tag_id"
 
   create_table "feeds", :force => true do |t|
     t.string   "url"
@@ -41,5 +44,11 @@ ActiveRecord::Schema.define(:version => 20130217202119) do
   end
 
   add_index "feeds", ["url"], :name => "index_feeds_on_url", :unique => true
+
+  create_table "tumblr_tags", :force => true do |t|
+    t.string   "tag"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

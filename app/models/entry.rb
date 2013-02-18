@@ -2,11 +2,12 @@ require 'uri'
 require 'flickraw'
 
 class Entry < ActiveRecord::Base
-  FAV_THRESHOLD = 3
+  FAV_THRESHOLD = 5
 
   attr_accessible :content, :link, :published, :title, :photo_id, :favorite_cnt
 
   belongs_to :feed
+  belongs_to :tumblr_tag
 
   validates_presence_of :content
   validates_uniqueness_of :content
