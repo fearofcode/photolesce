@@ -24,3 +24,8 @@ task fetch_flickr_favorites: :environment do
     entry.save
   end
 end
+
+
+desc 'Fetch all data needed for display'
+task fetch_all: [:update_feeds, :update_tags, :fetch_flickr_favorites] do
+end

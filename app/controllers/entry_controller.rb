@@ -7,7 +7,7 @@ class EntryController < ApplicationController
    
     @page = params[:page] 
     offset = (@page-1)*PERPAGE
-    @entries = Entry.offset(offset).limit(PERPAGE).where("favorite_cnt >= ?", Entry::FAV_THRESHOLD)
+    @entries = Entry.offset(offset).limit(PERPAGE).where("favorite_cnt >= ? OR tumblr_tag_id IS NOT NULL", Entry::FAV_THRESHOLD)
 
     @next_page = (Entry.count > @page*PERPAGE)
   end
