@@ -1,0 +1,12 @@
+<h1>Feed export</h1>
+
+<p>Copy and paste the list of URLs below to transfer the feeds you aggregate between installations of this application. 
+After you export them, you can <%= link_to "import them", feeds_bulk_new_path %> all at once.</p>
+
+<p>
+<pre>
+<% @feeds.each do |feed| %>
+<%= feed.url %>
+<% end %>
+</pre>
+</p>

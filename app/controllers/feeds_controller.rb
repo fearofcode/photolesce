@@ -34,6 +34,27 @@ class FeedsController < ApplicationController
     end
   end
 
+  def export
+    @feeds = Feed.all
+  end
+
+  def bulk_new
+  end
+
+  def bulk_create
+    urls = params[:urls].split("\n")
+
+    urls.each do |url|
+      feed = Feed.new(url: url.strip)
+
+      if !feed.save
+        redirect_to feeds_path, alert: "Unable to create feed with URL #{url}"
+      end
+    end
+
+    redirect_to feeds_path, notice: "#{urls.size} new feeds successfully added."
+  end
+
   # GET /feeds/1/edit
   def edit
     @feed = Feed.find(params[:id])

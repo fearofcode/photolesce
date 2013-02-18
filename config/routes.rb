@@ -1,4 +1,7 @@
 Photolesce::Application.routes.draw do
+  get "/feeds/export"
+  get "/feeds/bulk_new"
+  post "/feeds/bulk_create"
   resources :feeds
 
   match "/about" => "entry#about"
