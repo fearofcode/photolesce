@@ -17,4 +17,6 @@ Photolesce should work like any normal Rails 3 app. All you need to do is deploy
 
 After you've deployed and configured it, head to the admin interface at `/feeds` to start adding content to aggregate.
 
-You'll then want to put the rake tasks that fetch content on a cron job; make a cron job that runs `rake fetch_all`. Because this makes many API calls to Flickr, you'll only want to run it a few times a day.
+Photolesce currently uses MySQL, so make a MySQL database named 'photolesce' and then fill out `config/database.yml.template` as you did with the secret_info file above.
+
+You'll then want to put the rake tasks that fetch content on a cron job; make a cron job that runs `rake fetch_all RAILS_ENV=production`. Because this makes many API calls to Flickr, you'll only want to run it a few times a day.
