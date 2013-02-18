@@ -2,6 +2,8 @@ require 'uri'
 require 'flickraw'
 
 class Entry < ActiveRecord::Base
+  FAV_THRESHOLD = 3
+
   attr_accessible :content, :link, :published, :title, :photo_id, :favorite_cnt
 
   belongs_to :feed
@@ -13,6 +15,7 @@ class Entry < ActiveRecord::Base
 
   before_save :set_photo_id
   before_save :initialize_title
+  before_save :update_published_if_threshold_crossed
 
   def set_photo_id
     begin
@@ -29,6 +32,19 @@ class Entry < ActiveRecord::Base
 
   def initialize_title
     self.title = "Untitled" if !title
+  end
+
+  def update_published_if_threshold_crossed
+    return if !self.changes["favorite_cnt"]
+
+    old_favorite_cnt = self.changes["favorite_cnt"][0]
+    new_favorite_cnt = self.changes["favorite_cnt"][1]
+
+    return if !old_favorite_cnt || !new_favorite_cnt
+
+    if old_favorite_cnt < FAV_THRESHOLD && new_favorite_cnt >= FAV_THRESHOLD
+      self.published = Time.now
+    end
   end
 
   def fetch_favorite_count
