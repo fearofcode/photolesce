@@ -3,7 +3,7 @@
     <div class="entry">
       <a name="entry<%=i+1%>"></a>
             <div class="entry-body">
-              <a href='<%= entry.link %>' title="<%= strip_tags(entry.title) %><%= source_str(entry) %>">
+              <a href='<%= entry.link %>' title="<%= source_str(entry) %>">
           <img
             data-src="<%= entry.content %>"
             src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
@@ -12,8 +12,11 @@
       </div>
 
       <div class="entry-footer">
-        <span class="entry-title"><%= strip_tags(entry.title) %></span>
-        <span class="published-time"><a href="/?page=<%=params[:page]%>#entry<%=i+1%>"><%= time_ago_in_words(entry.published) %></a></span>
+        <% if !(/tumblr.com/ =~ entry.content) %>
+          <span class="entry-title"><%= strip_tags(entry.title) %></span>
+        <% end %>
+
+        <span class="published-time"><a href="/?page=<%=params[:page]%>#entry<%=i+1%>"><%= time_ago_in_words(entry.published) %> ago</a></span>
       </div>
     </div>
   <% end %>

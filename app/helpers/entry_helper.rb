@@ -1,9 +1,9 @@
 module EntryHelper
   def source_str(entry)
-    if entry.tumblr_tag_id
-      ", from Tumblr tag #{entry.tumblr_tag.tag} API search"
-    elsif entry.feed.title
-      ", from Flickr feed '#{entry.feed.title}'"
+    if entry.tumblr_tag
+      "from Tumblr tag #{entry.tumblr_tag.tag}"
+    elsif entry.feed && entry.feed.title
+      "'#{entry.title}', from Flickr feed '#{entry.feed.title}'"
     else
       ""
     end
