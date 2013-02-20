@@ -2,8 +2,6 @@ require 'uri'
 require 'flickraw'
 
 class Entry < ActiveRecord::Base
-  FAV_THRESHOLD = 5
-
   attr_accessible :content, :link, :published, :title, :photo_id, :favorite_cnt
 
   belongs_to :feed
@@ -43,7 +41,7 @@ class Entry < ActiveRecord::Base
 
     return if !old_favorite_cnt || !new_favorite_cnt
 
-    if old_favorite_cnt < FAV_THRESHOLD && new_favorite_cnt >= FAV_THRESHOLD
+    if old_favorite_cnt < FLICKR_FAV_THRESHOLD && new_favorite_cnt >= FLICKR_FAV_THRESHOLD
       self.published = Time.now
     end
   end

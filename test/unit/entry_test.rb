@@ -29,9 +29,9 @@ class EntryTest < ActiveSupport::TestCase
   end
 
   test "Sets published date to current time when its favorite count crosses a threshold" do
-    entry = Entry.create(content: "http://foo.com/threshold_test.jpg", published: 1.day.ago, favorite_cnt: Entry::FAV_THRESHOLD - 1)
+    entry = Entry.create(content: "http://foo.com/threshold_test.jpg", published: 1.day.ago, favorite_cnt: FLICKR_FAV_THRESHOLD - 1)
 
-    entry.favorite_cnt = Entry::FAV_THRESHOLD
+    entry.favorite_cnt = FLICKR_FAV_THRESHOLD
     entry.save
 
     assert((Time.now - entry.published) < 1)
