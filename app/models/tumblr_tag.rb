@@ -1,5 +1,5 @@
 class TumblrTag < ActiveRecord::Base
-  NOTE_THRESHOLD = 10
+  NOTE_THRESHOLD = 25
 
   attr_accessible :tag
 
